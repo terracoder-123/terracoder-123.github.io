@@ -9,6 +9,6 @@ This repository contains a static portfolio site (`index.html`).
 3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
 4. The workflow at `.github/workflows/deploy-pages.yml` will deploy the site automatically.
 
-After deployment, your public URL will be:
+After deployment, your public URL will be in the format:
 
-`https://terracoder-123.github.io/My-portfolio/`
+`https://<github-username>.github.io/<repository-name>/`
