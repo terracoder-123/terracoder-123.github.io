@@ -69,6 +69,10 @@
     border-bottom: 1px solid var(--border);
   }
 
+  .theme-day nav {
+    background: rgba(255,255,255,0.92);
+  }
+
   .nav-logo {
     display: inline-flex;
     align-items: center;
@@ -170,13 +174,14 @@
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: .85rem;
     margin-left: auto;
+    flex-wrap: nowrap;
   }
 
   @media (max-width: 768px) {
     .nav-resume { display: none; }
-    .nav-actions { gap: 0.8rem; }
+    .nav-actions { gap: 0.7rem; }
   }
 
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -195,8 +200,14 @@
     flex-direction: column; gap: 1.2rem;
   }
 
+  .theme-day .mobile-menu {
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 18px 40px rgba(15,23,32,0.08);
+  }
+
   .mobile-menu.open { display: flex; }
   .mobile-menu a { color: var(--text); text-decoration: none; font-family: var(--mono-font); font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; }
+  .theme-day .mobile-menu a { color: var(--text); }
   .mobile-menu a:hover { color: var(--accent); }
 
   /* ─── HERO ─── */
@@ -269,7 +280,10 @@
   }
 
   .hero-actions {
-    display: flex; gap: 1rem; flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, max-content));
+    gap: .85rem;
+    align-items: center;
     margin-top: 2.2rem;
     opacity: 0; animation: fadeUp .7s ease forwards .8s;
   }
@@ -288,6 +302,10 @@
     text-decoration: none;
     font-weight: 700;
     transition: opacity .2s, transform .2s;
+    min-width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-primary:hover { opacity: .85; transform: translateY(-2px); }
@@ -305,9 +323,25 @@
     cursor: pointer;
     text-decoration: none;
     transition: border-color .2s, color .2s, transform .2s;
+    min-width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  @media (max-width: 640px) {
+    .hero-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      min-width: 0;
+    }
+  }
 
   .hero-contact-strip {
     display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;
@@ -920,6 +954,338 @@
   .badge-system   { color: #ff8a60; border-color: rgba(255,138,96,.3); background: rgba(255,138,96,.07); }
   .badge-dev      { color: #e8c040; border-color: rgba(232,192,64,.3); background: rgba(232,192,64,.07); }
 
+  /* ─── GNN LAB ─── */
+  #gnn-game {
+    background: linear-gradient(180deg, rgba(232,68,42,.04), rgba(255,128,96,.02));
+  }
+
+  .gnn-lab {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .gnn-lab-panel,
+  .gnn-lab-quiz {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gnn-lab-panel::before,
+  .gnn-lab-quiz::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(232,68,42,.12), transparent 36%);
+    pointer-events: none;
+  }
+
+  .gnn-lab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gnn-lab-header h3 {
+    font-family: var(--heading-font);
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+  }
+
+  .gnn-scoreboard {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .gnn-stat {
+    min-width: 82px;
+    padding: .75rem .9rem;
+    border-radius: 10px;
+    background: rgba(232,68,42,.08);
+    border: 1px solid rgba(232,68,42,.16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .15rem;
+  }
+
+  .gnn-stat .value {
+    font-family: var(--heading-font);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--accent2);
+  }
+
+  .gnn-stat .label {
+    font-family: var(--mono-font);
+    font-size: .58rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .gnn-graph {
+    width: 100%;
+    height: 340px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    cursor: grab;
+    touch-action: none;
+  }
+
+  .gnn-graph.dragging {
+    cursor: grabbing;
+  }
+
+  .gnn-node {
+    cursor: pointer;
+    transition: transform .2s ease, filter .2s ease;
+  }
+
+  .gnn-node:hover {
+    filter: brightness(1.06);
+  }
+
+  .gnn-node.highlighted circle {
+    stroke: #fff;
+    filter: drop-shadow(0 0 14px rgba(255,255,255,.18));
+  }
+
+  .gnn-node.neighbor circle {
+    stroke: var(--accent2);
+    filter: drop-shadow(0 0 10px rgba(255,128,96,.18));
+  }
+
+  .gnn-node.dimmed {
+    opacity: .28;
+  }
+
+  .gnn-edge.active {
+    stroke: rgba(232,68,42,.72);
+    stroke-width: 3.5;
+  }
+
+  .gnn-edge.dimmed {
+    opacity: .12;
+  }
+
+  .gnn-node circle {
+    stroke-width: 3;
+  }
+
+  .gnn-node.target circle {
+    stroke: var(--accent);
+    stroke-dasharray: 5 4;
+    filter: drop-shadow(0 0 10px rgba(232,68,42,.24));
+  }
+
+  .gnn-node text {
+    fill: #fff;
+    font-family: var(--mono-font);
+    font-size: 12px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+  }
+
+  .gnn-edge {
+    stroke: rgba(232,68,42,.28);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+
+  .gnn-node-label {
+    fill: var(--muted);
+    font-family: var(--mono-font);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  .gnn-quiz-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .gnn-pill {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: .35rem .7rem;
+    border-radius: 999px;
+    font-family: var(--mono-font);
+    font-size: .62rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    border: 1px solid rgba(255,128,96,.25);
+    background: rgba(255,128,96,.08);
+  }
+
+  .gnn-question {
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    line-height: 1.05;
+  }
+
+  .gnn-help {
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.75;
+  }
+
+  .gnn-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .8rem;
+  }
+
+  .gnn-choice {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.02);
+    color: var(--text);
+    border-radius: 10px;
+    padding: .85rem .8rem;
+    font-family: var(--mono-font);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: .68rem;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+
+  .gnn-choice:hover {
+    transform: translateY(-2px);
+    border-color: rgba(232,68,42,.4);
+    background: rgba(232,68,42,.08);
+  }
+
+  .gnn-choice.correct {
+    border-color: rgba(72, 199, 102, .45);
+    background: rgba(72, 199, 102, .12);
+  }
+
+  .gnn-choice.wrong {
+    border-color: rgba(255, 99, 99, .45);
+    background: rgba(255, 99, 99, .1);
+  }
+
+  .gnn-feedback {
+    min-height: 56px;
+    padding: .9rem 1rem;
+    border-radius: 10px;
+    background: rgba(232,68,42,.06);
+    border: 1px solid rgba(232,68,42,.12);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .gnn-feedback strong {
+    color: var(--accent2);
+    font-family: var(--mono-font);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: .72rem;
+  }
+
+  .gnn-actions {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+  }
+
+  .gnn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .8rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    text-decoration: none;
+    font-family: var(--mono-font);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: .68rem;
+    transition: all .25s ease;
+  }
+
+  .gnn-action.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-color: transparent;
+    color: #fff;
+  }
+
+  .gnn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(232,68,42,.15);
+  }
+
+  .gnn-action.ghost {
+    background: transparent;
+    color: var(--muted);
+  }
+
+  .gnn-action.ghost:hover {
+    color: var(--text);
+    border-color: rgba(232,68,42,.28);
+  }
+
+  .mobile-sticky-bar {
+    display: none;
+    position: fixed;
+    left: .9rem;
+    right: .9rem;
+    bottom: .9rem;
+    z-index: 120;
+    gap: .7rem;
+  }
+
+  .mobile-sticky-bar a {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: .9rem .8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: var(--mono-font);
+    font-size: .68rem;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 26px rgba(0,0,0,.24);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobile-sticky-bar .mobile-contact {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+  }
+
+  .mobile-sticky-bar .mobile-demo {
+    background: rgba(255,255,255,.92);
+    color: var(--accent);
+    border: 1px solid rgba(232,68,42,.18);
+  }
+
   /* ─── EDUCATION ─── */
   #education .edu-timeline { display: flex; flex-direction: column; }
 
@@ -1029,8 +1395,22 @@
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
     .project-card { grid-template-columns: 1fr; }
+    .project-card { padding-top: 3.25rem; }
+    .project-badge {
+      position: static;
+      top: auto;
+      right: auto;
+      display: inline-flex;
+      margin-bottom: .9rem;
+      align-self: flex-start;
+    }
     .edu-item { grid-template-columns: 1fr; gap: .5rem; }
     .edu-year { text-align: left; }
+    .gnn-lab { grid-template-columns: 1fr; }
+    .gnn-buttons { grid-template-columns: 1fr; }
+    .gnn-question { font-size: 1.6rem; }
+    .mobile-sticky-bar { display: flex; }
+    footer { padding-bottom: 5rem; }
   }
 
   /* ─── PAGE LOADER (hoverable) ─── */
@@ -1186,28 +1566,74 @@
     transform: translateY(-2px) scale(1.05);
   }
 
-  /* Resume button in nav */
+  /* Resume / booking buttons in nav */
   .nav-resume {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     font-family: var(--mono-font);
     font-size: .68rem;
     letter-spacing: 2.2px;
     text-transform: uppercase;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
     color: #fff;
-    border: none;
-    padding: .45rem 1.1rem;
+    border: 1px solid rgba(255,255,255,.14);
+    padding: .5rem 1.05rem;
     border-radius: 999px;
     cursor: pointer;
     text-decoration: none;
-    transition: all .2s ease;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease;
     line-height: 1;
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(232,68,42,.25);
+    box-shadow: 0 10px 24px rgba(232,68,42,.18), inset 0 1px 0 rgba(255,255,255,.22);
+    transform-style: preserve-3d;
+  }
+
+  .nav-resume::before {
+    content: '';
+    position: absolute;
+    inset: -35%;
+    background: linear-gradient(90deg, #ff3b30, #ff9500, #ffd60a, #34c759, #00c7ff, #5856d6, #ff2d55, #ff3b30);
+    background-size: 300% 300%;
+    animation: rgbFlow 6s linear infinite;
+    z-index: -2;
+  }
+
+  .nav-resume::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: rgba(13, 10, 12, .88);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+  }
+
+  .theme-day .nav-resume::after {
+    background: rgba(255,255,255,.86);
   }
 
   .nav-resume:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(232,68,42,.35);
+    transform: translateY(-3px) perspective(900px) rotateX(10deg);
+    box-shadow: 0 18px 32px rgba(232,68,42,.26), 0 0 0 1px rgba(255,255,255,.08), inset 0 1px 0 rgba(255,255,255,.22);
+    border-color: rgba(255,255,255,.26);
+  }
+
+  .nav-resume:hover::before {
+    animation-duration: 2.8s;
+  }
+
+  @keyframes rgbFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-resume {
+      padding: .4rem .72rem;
+      font-size: .58rem;
+      letter-spacing: 1.8px;
+    }
   }
 
   /* Enhanced achievement stats */
@@ -1332,6 +1758,18 @@
     background: linear-gradient(135deg, rgba(200,100,255,.12), rgba(220,150,255,.08));
     color: #c864ff;
     border: 1px solid rgba(200,100,255,.2);
+  }
+
+  @media (max-width: 768px) {
+    .project-card { padding-top: 3.25rem; }
+    .project-badge {
+      position: static;
+      top: auto;
+      right: auto;
+      display: inline-flex;
+      margin-bottom: .9rem;
+      align-self: flex-start;
+    }
   }
 
   /* ─── CONTACT CTA OVERLAY ─── */
@@ -1477,7 +1915,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="#" class="nav-resume" onclick="downloadResume(event)">📄 Resume</a>
+    <a href="#" class="nav-resume" onclick="downloadResumePdf(event)">📄 PDF Resume</a>
     <button class="hamburger" aria-label="Menu" onclick="toggleMenu(this)">
       <span></span><span></span><span></span>
     </button>
@@ -1557,7 +1995,7 @@
         <div class="stat-label">Years Research</div>
       </div>
       <div class="stat-badge stat-badge-2">
-        <div class="stat-number">4</div>
+        <div class="stat-number">3</div>
         <div class="stat-label">Key Projects</div>
       </div>
     </div>
@@ -1842,6 +2280,46 @@
   </div>
 </section>
 
+  <!-- GNN GAME -->
+  <section id="gnn-game">
+    <div class="section-label">// 02.5 — Interactive Demo</div>
+    <h2 class="section-title">GNN<br>Message Passing Lab</h2>
+
+    <div class="gnn-lab">
+      <div class="gnn-lab-panel">
+        <div class="gnn-lab-header">
+          <h3>Graph Snapshot</h3>
+          <div class="gnn-scoreboard">
+            <div class="gnn-stat">
+              <div class="value" id="gnnScore">0</div>
+              <div class="label">Score</div>
+            </div>
+            <div class="gnn-stat">
+              <div class="value" id="gnnRound">1</div>
+              <div class="label">Round</div>
+            </div>
+          </div>
+        </div>
+        <svg class="gnn-graph" id="gnnGraph" viewBox="0 0 600 340" role="img" aria-label="Graph neural network mini game graph"></svg>
+      </div>
+
+      <div class="gnn-lab-quiz">
+        <div class="gnn-quiz-copy">
+          <span class="gnn-pill">Node Classification</span>
+          <div class="gnn-question" id="gnnQuestion">Predict the highlighted node</div>
+          <p class="gnn-help" id="gnnHint">Use the neighborhood patterns to infer the target class. This mimics a simple GNN message-passing step.</p>
+          <div class="gnn-buttons" id="gnnChoices"></div>
+          <div class="gnn-feedback" id="gnnFeedback">Choose one of the classes to classify the highlighted node.</div>
+          <div class="gnn-actions">
+            <a href="#contact" class="gnn-action primary">Book Contact</a>
+            <button type="button" class="gnn-action ghost" id="gnnReset">Reset Graph</button>
+            <a href="mailto:althafrismy01@gmail.com" class="gnn-action">Email Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <!-- EDUCATION -->
 <section id="education">
   <div class="section-label">// 03 — Academic Foundation</div>
@@ -1983,6 +2461,284 @@
   <div class="foot-brand">ALTHAF RISMY</div>
   <div class="foot-copy">© 2025 · Data Analyst · Melbourne, Australia</div>
 </footer>
+
+<div class="mobile-sticky-bar" aria-label="Quick contact actions">
+  <a href="#gnn-game" class="mobile-demo">Play Demo</a>
+  <a href="mailto:althafrismy01@gmail.com" class="mobile-contact">Hire / Contact</a>
+</div>
+
+<script>
+  // GNN mini game: classify the target node from neighborhood signals.
+  (function(){
+    const rounds = [
+      {
+        target: 'n2',
+        correct: 'Bridge',
+        hint: 'Node n2 sits between a dense core and a peripheral trail. Message passing should pull it toward a bridge class.',
+        feedback: 'The target is a bridge node because its neighbors connect two regions of the graph.',
+        nodes: [
+          { id: 'n1', x: 120, y: 86, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n2', x: 262, y: 106, label: 'Target', color: '#ff8060', fill: 'rgba(255,128,96,.92)' },
+          { id: 'n3', x: 140, y: 228, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n4', x: 390, y: 88, label: 'Bridge', color: '#e8c040', fill: 'rgba(232,192,64,.92)' },
+          { id: 'n5', x: 480, y: 210, label: 'Peripheral', color: '#64d9ff', fill: 'rgba(100,217,255,.92)' }
+        ],
+        edges: [['n1','n2'],['n2','n3'],['n2','n4'],['n4','n5']]
+      },
+      {
+        target: 'n4',
+        correct: 'Peripheral',
+        hint: 'Node n4 has only one strong connection and receives mostly weak signals. That makes it easy to classify as peripheral.',
+        feedback: 'The target is peripheral: low degree, weak local context, and limited message aggregation.',
+        nodes: [
+          { id: 'n1', x: 110, y: 95, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n2', x: 220, y: 182, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n3', x: 345, y: 92, label: 'Bridge', color: '#e8c040', fill: 'rgba(232,192,64,.92)' },
+          { id: 'n4', x: 470, y: 180, label: 'Target', color: '#ff8060', fill: 'rgba(255,128,96,.92)' },
+          { id: 'n5', x: 345, y: 262, label: 'Peripheral', color: '#64d9ff', fill: 'rgba(100,217,255,.92)' },
+          { id: 'n6', x: 160, y: 286, label: 'Peripheral', color: '#64d9ff', fill: 'rgba(100,217,255,.92)' }
+        ],
+        edges: [['n1','n2'],['n2','n3'],['n3','n4'],['n3','n5'],['n2','n6']]
+      },
+      {
+        target: 'n3',
+        correct: 'Core',
+        hint: 'Node n3 sits in the densest neighborhood and is reinforced by multiple same-class neighbors.',
+        feedback: 'The target is core because its neighborhood is dense and the aggregated features are dominated by nearby core nodes.',
+        nodes: [
+          { id: 'n1', x: 130, y: 104, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n2', x: 210, y: 70, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n3', x: 320, y: 155, label: 'Target', color: '#ff8060', fill: 'rgba(255,128,96,.92)' },
+          { id: 'n4', x: 430, y: 92, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' },
+          { id: 'n5', x: 470, y: 224, label: 'Bridge', color: '#e8c040', fill: 'rgba(232,192,64,.92)' },
+          { id: 'n6', x: 234, y: 258, label: 'Core', color: '#e8442a', fill: 'rgba(232,68,42,.92)' }
+        ],
+        edges: [['n1','n2'],['n2','n3'],['n1','n3'],['n3','n4'],['n4','n5'],['n3','n6'],['n2','n6']]
+      }
+    ];
+
+    const graphEl = document.getElementById('gnnGraph');
+    const scoreEl = document.getElementById('gnnScore');
+    const roundEl = document.getElementById('gnnRound');
+    const questionEl = document.getElementById('gnnQuestion');
+    const hintEl = document.getElementById('gnnHint');
+    const feedbackEl = document.getElementById('gnnFeedback');
+    const choicesEl = document.getElementById('gnnChoices');
+    const resetBtn = document.getElementById('gnnReset');
+
+    if(!graphEl || !scoreEl || !roundEl || !questionEl || !hintEl || !feedbackEl || !choicesEl || !resetBtn) return;
+
+    const labels = ['Core', 'Bridge', 'Peripheral'];
+    let sceneGroup = null;
+    let roundIndex = 0;
+    let score = 0;
+    let locked = false;
+    let panX = 0;
+    let panY = 0;
+    let dragState = { active: false, startX: 0, startY: 0, originX: 0, originY: 0 };
+    let inertiaFrame = 0;
+    let lastMove = { x: 0, y: 0, time: 0 };
+    let activeRound = null;
+
+    function updateSceneTransform(){
+      if(sceneGroup) sceneGroup.setAttribute('transform', `translate(${panX}, ${panY})`);
+    }
+
+    function resetPan(){
+      if(inertiaFrame) cancelAnimationFrame(inertiaFrame);
+      inertiaFrame = 0;
+      panX = 0;
+      panY = 0;
+      updateSceneTransform();
+    }
+
+    function highlightNeighbors(nodeId){
+      if(!activeRound || !sceneGroup) return;
+      const connected = new Set([nodeId]);
+      activeRound.edges.forEach(([a, b]) => {
+        if(a === nodeId) connected.add(b);
+        if(b === nodeId) connected.add(a);
+      });
+      const nodeEls = sceneGroup.querySelectorAll('.gnn-node');
+      const edgeEls = sceneGroup.querySelectorAll('.gnn-edge');
+      nodeEls.forEach(nodeEl => {
+        const id = nodeEl.getAttribute('data-id');
+        nodeEl.classList.remove('highlighted', 'neighbor', 'dimmed');
+        if(id === nodeId) nodeEl.classList.add('highlighted');
+        else if(connected.has(id)) nodeEl.classList.add('neighbor');
+        else nodeEl.classList.add('dimmed');
+      });
+      edgeEls.forEach(edgeEl => {
+        const a = edgeEl.getAttribute('data-a');
+        const b = edgeEl.getAttribute('data-b');
+        edgeEl.classList.remove('active', 'dimmed');
+        if(a === nodeId || b === nodeId || connected.has(a) && connected.has(b)) edgeEl.classList.add('active');
+        else edgeEl.classList.add('dimmed');
+      });
+    }
+
+    function clearHighlights(){
+      if(!sceneGroup) return;
+      sceneGroup.querySelectorAll('.gnn-node, .gnn-edge').forEach(el => {
+        el.classList.remove('highlighted', 'neighbor', 'dimmed', 'active');
+      });
+    }
+
+    function settleBack(){
+      if(inertiaFrame) cancelAnimationFrame(inertiaFrame);
+      const startX = panX;
+      const startY = panY;
+      const driftX = Math.max(-80, Math.min(80, (panX - dragState.originX) * 0.18));
+      const driftY = Math.max(-50, Math.min(50, (panY - dragState.originY) * 0.18));
+      const peakX = startX + driftX;
+      const peakY = startY + driftY;
+      const duration = 420;
+      const started = performance.now();
+
+      function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+      function frame(now){
+        const progress = Math.min(1, (now - started) / duration);
+        const eased = easeOutCubic(progress);
+        if(progress < 0.35){
+          panX = startX + (peakX - startX) * (progress / 0.35);
+          panY = startY + (peakY - startY) * (progress / 0.35);
+        } else {
+          const returnProgress = (progress - 0.35) / 0.65;
+          panX = peakX + (0 - peakX) * easeOutCubic(returnProgress);
+          panY = peakY + (0 - peakY) * easeOutCubic(returnProgress);
+        }
+        updateSceneTransform();
+        if(progress < 1) inertiaFrame = requestAnimationFrame(frame);
+        else {
+          panX = 0;
+          panY = 0;
+          updateSceneTransform();
+          inertiaFrame = 0;
+        }
+      }
+
+      inertiaFrame = requestAnimationFrame(frame);
+    }
+
+    graphEl.addEventListener('pointerdown', (event) => {
+      dragState.active = true;
+      dragState.startX = event.clientX;
+      dragState.startY = event.clientY;
+      dragState.originX = panX;
+      dragState.originY = panY;
+      lastMove = { x: event.clientX, y: event.clientY, time: performance.now() };
+      graphEl.classList.add('dragging');
+      graphEl.setPointerCapture?.(event.pointerId);
+    });
+
+    window.addEventListener('pointermove', (event) => {
+      if(!dragState.active) return;
+      panX = dragState.originX + (event.clientX - dragState.startX);
+      panY = dragState.originY + (event.clientY - dragState.startY);
+      lastMove = { x: event.clientX, y: event.clientY, time: performance.now() };
+      updateSceneTransform();
+    });
+
+    window.addEventListener('pointerup', () => {
+      if(!dragState.active) return;
+      dragState.active = false;
+      graphEl.classList.remove('dragging');
+      settleBack();
+    });
+
+    function renderRound(){
+      const round = rounds[roundIndex];
+      activeRound = round;
+      locked = false;
+      resetPan();
+      clearHighlights();
+      roundEl.textContent = String(roundIndex + 1);
+      scoreEl.textContent = String(score);
+      questionEl.textContent = 'Classify the highlighted node';
+      hintEl.textContent = round.hint;
+      feedbackEl.innerHTML = '<strong>GNN Prompt</strong><br>Choose the label you think a one-layer message-passing model would predict.';
+      choicesEl.innerHTML = labels.map(label => `<button class="gnn-choice" data-label="${label}">${label}</button>`).join('');
+
+      const edges = round.edges.map(([a,b]) => {
+        const n1 = round.nodes.find(node => node.id === a);
+        const n2 = round.nodes.find(node => node.id === b);
+        return `<line class="gnn-edge" data-a="${a}" data-b="${b}" x1="${n1.x}" y1="${n1.y}" x2="${n2.x}" y2="${n2.y}"></line>`;
+      }).join('');
+
+      const nodes = round.nodes.map(node => {
+        const isTarget = node.id === round.target;
+        return `
+          <g class="gnn-node ${isTarget ? 'target' : ''}" data-id="${node.id}" transform="translate(${node.x}, ${node.y})">
+            <circle r="26" fill="${node.fill}" stroke="${node.color}"></circle>
+            <text y="2">${node.id.toUpperCase()}</text>
+            <text class="gnn-node-label" y="46">${node.label}</text>
+          </g>
+        `;
+      }).join('');
+
+      graphEl.innerHTML = `<g id="gnnScene">${edges}${nodes}</g>`;
+      sceneGroup = document.getElementById('gnnScene');
+      updateSceneTransform();
+
+      sceneGroup.querySelectorAll('.gnn-node').forEach(nodeEl => {
+        nodeEl.addEventListener('mouseenter', () => highlightNeighbors(nodeEl.getAttribute('data-id')));
+        nodeEl.addEventListener('mouseleave', clearHighlights);
+      });
+
+      choicesEl.querySelectorAll('.gnn-choice').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if(locked) return;
+          locked = true;
+          const guess = btn.getAttribute('data-label');
+          const correct = guess === round.correct;
+          if(correct) {
+            score += 1;
+            btn.classList.add('correct');
+            feedbackEl.innerHTML = `<strong>Correct</strong><br>${round.feedback}`;
+          } else {
+            btn.classList.add('wrong');
+            const correctBtn = choicesEl.querySelector(`[data-label="${round.correct}"]`);
+            if(correctBtn) correctBtn.classList.add('correct');
+            feedbackEl.innerHTML = `<strong>Not quite</strong><br>The correct answer is <strong>${round.correct}</strong>. ${round.feedback}`;
+          }
+          scoreEl.textContent = String(score);
+
+          setTimeout(() => {
+            roundIndex += 1;
+            if(roundIndex >= rounds.length) {
+              questionEl.textContent = 'All rounds completed';
+              hintEl.textContent = 'You just completed a miniature GNN-style classification demo.';
+              feedbackEl.innerHTML = `<strong>Result</strong><br>You scored ${score} out of ${rounds.length}. If you want, I can turn this into a live graph dashboard or add more rounds.`;
+              choicesEl.innerHTML = `<a href="#contact" class="gnn-action primary">Discuss Project</a><a href="mailto:althafrismy01@gmail.com" class="gnn-action">Hire Me</a>`;
+              roundEl.textContent = String(rounds.length);
+              return;
+            }
+            renderRound();
+          }, 1100);
+        });
+      });
+    }
+
+    renderRound();
+
+    resetBtn.addEventListener('click', () => {
+      roundIndex = 0;
+      score = 0;
+      renderRound();
+      feedbackEl.innerHTML = '<strong>Reset</strong><br>The demo has been reset to round 1.';
+    });
+
+    const stickyBar = document.querySelector('.mobile-sticky-bar');
+    function syncStickyBar(){
+      if(!stickyBar) return;
+      stickyBar.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+    }
+    syncStickyBar();
+    window.addEventListener('resize', syncStickyBar);
+  })();
+</script>
+
 <script>
   // Theme toggle: clicking nav logo toggles day theme and persists preference
   (function(){
@@ -2252,87 +3008,104 @@
   });
 
   // Resume download function
-  function downloadResume(e) {
+  function downloadResumePdf(e) {
     e.preventDefault();
-    // Create a simple text file with resume content
-    const resumeContent = `ALTHAF RISMY
-Data Analyst & AI Researcher
-Melbourne, Australia
 
-📧 althafrismy01@gmail.com
-🔗 linkedin.com/in/althaf-rismy0390b0154
-🔗 github.com/terracoder-123/jarvis
+    function escapePdfText(text) {
+      return String(text).replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+    }
 
-═══════════════════════════════════════════
+    function addPdfLine(stream, text, font, size, leading) {
+      return stream + `/${font} ${size} Tf\n${leading} TL\n(${escapePdfText(text)}) Tj\nT*\n`;
+    }
 
-PROFESSIONAL SUMMARY
-Results-oriented Data Analyst with 2+ years of research experience. 
-Specializing in graph-based modeling, social network analysis, and AI-driven solutions.
-Currently pursuing Master by Research in Data Analytics at MIT Australia.
+    let content = 'BT\n1 0 0 1 48 790 Tm\n';
+    const lines = [
+      { text: 'ALTHAF RISMY', font: 'F2', size: 20, leading: 24 },
+      { text: 'Data Analyst & AI Researcher', font: 'F1', size: 11, leading: 14 },
+      { text: 'Melbourne, Australia', font: 'F1', size: 10, leading: 13 },
+      { text: 'Email: althafrismy01@gmail.com', font: 'F1', size: 10, leading: 13 },
+      { text: 'LinkedIn: linkedin.com/in/althaf-rismy0390b0154', font: 'F1', size: 10, leading: 13 },
+      { text: 'GitHub: github.com/terracoder-123/jarvis', font: 'F1', size: 10, leading: 13 },
+      { text: '', font: 'F1', size: 10, leading: 12 },
+      { text: 'PROFESSIONAL SUMMARY', font: 'F2', size: 12, leading: 16 },
+      { text: 'Results-oriented Data Analyst with 2+ years of research experience.', font: 'F1', size: 10, leading: 13 },
+      { text: 'Specializes in graph modeling, social network analysis, and AI solutions.', font: 'F1', size: 10, leading: 13 },
+      { text: 'Currently pursuing Master by Research in Data Analytics at MIT Australia.', font: 'F1', size: 10, leading: 13 },
+      { text: '', font: 'F1', size: 10, leading: 12 },
+      { text: 'KEY EXPERTISE', font: 'F2', size: 12, leading: 16 },
+      { text: 'Data Analysis: Python, Pandas, NumPy, data cleaning, exploratory analysis', font: 'F1', size: 10, leading: 13 },
+      { text: 'Databases: SQL, MySQL, Neo4j, ArangoDB', font: 'F1', size: 10, leading: 13 },
+      { text: 'Visualization: Matplotlib, Seaborn, Vis.js, Plotly', font: 'F1', size: 10, leading: 13 },
+      { text: 'Machine Learning: Scikit-Learn, pattern recognition, predictive models', font: 'F1', size: 10, leading: 13 },
+      { text: 'AI/ML: Whisper, Llama, Groq, computer vision', font: 'F1', size: 10, leading: 13 },
+      { text: '', font: 'F1', size: 10, leading: 12 },
+      { text: 'KEY PROJECTS', font: 'F2', size: 12, leading: 16 },
+      { text: 'Graph Representation of Personal & Criminal Networks', font: 'F1', size: 10, leading: 13 },
+      { text: '- Social Network Analysis with Neo4j and ArangoDB', font: 'F1', size: 10, leading: 13 },
+      { text: '- Community detection and centrality measures', font: 'F1', size: 10, leading: 13 },
+      { text: 'MovieGraph - Graph-Based Recommendation System', font: 'F1', size: 10, leading: 13 },
+      { text: '- Flask backend, Vis.js frontend, TMDb API integration', font: 'F1', size: 10, leading: 13 },
+      { text: 'J.A.R.V.I.S. - Voice-First Multi-Modal AI Assistant', font: 'F1', size: 10, leading: 13 },
+      { text: '- Python, FastAPI, MCP, Whisper, Llama-4-Scout', font: 'F1', size: 10, leading: 13 },
+      { text: '- 35+ tools, LLM cascade, real-time HUD', font: 'F1', size: 10, leading: 13 },
+      { text: '', font: 'F1', size: 10, leading: 12 },
+      { text: 'EDUCATION', font: 'F2', size: 12, leading: 16 },
+      { text: 'Master by Research - Data Analytics, MIT Australia (2026-Present)', font: 'F1', size: 10, leading: 13 },
+      { text: 'Bachelor of Data Analytics, MIT Australia (2023-2025)', font: 'F1', size: 10, leading: 13 },
+      { text: 'BSc IT (Data Science) Diploma, SLIIT (2021-2022)', font: 'F1', size: 10, leading: 13 },
+      { text: '', font: 'F1', size: 10, leading: 12 },
+      { text: 'EXPERIENCE', font: 'F2', size: 12, leading: 16 },
+      { text: 'BCG / Forage - GenAI Job Simulation', font: 'F1', size: 10, leading: 13 },
+      { text: 'Commonwealth Bank / Forage - Data Science Simulation', font: 'F1', size: 10, leading: 13 },
+      { text: 'Lions Club International - Community Volunteer', font: 'F1', size: 10, leading: 13 },
+      { text: '', font: 'F1', size: 10, leading: 12 },
+      { text: 'CERTIFICATIONS', font: 'F2', size: 12, leading: 16 },
+      { text: 'Web Development - Web Design for Beginners', font: 'F1', size: 10, leading: 13 },
+      { text: 'Python for Beginners', font: 'F1', size: 10, leading: 13 }
+    ];
 
-═══════════════════════════════════════════
+    lines.forEach(line => {
+      content = addPdfLine(content, line.text, line.font, line.size, line.leading);
+    });
+    content += 'ET';
 
-KEY EXPERTISE
-• Data Analysis: Python, Pandas, NumPy, Data Cleaning, Exploratory Analysis
-• Databases: SQL, MySQL, Neo4j, ArangoDB
-• Visualization: Matplotlib, Seaborn, Vis.js, Plotly
-• Machine Learning: Scikit-Learn, Pattern Recognition, Predictive Models
-• AI/ML: Whisper, Llama, Groq, Computer Vision
-• Specializations: Social Network Analysis, Graph Modeling, Data Mining
+    const objects = [];
+    function addObject(number, body) {
+      objects[number] = `${number} 0 obj\n${body}\nendobj\n`;
+    }
 
-═══════════════════════════════════════════
+    addObject(1, '<< /Type /Catalog /Pages 2 0 R >>');
+    addObject(2, '<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
+    addObject(3, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>');
+    addObject(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>');
+    addObject(5, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>');
+    addObject(6, `<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
 
-KEY PROJECTS
-1. Graph Representation of Personal & Criminal Networks (Jul 2024 - Jul 2025)
-   - Social Network Analysis with Neo4j and ArangoDB
-   - Community Detection & Centrality Measures
-   
-2. MovieGraph - Graph-Based Recommendation System (2024 - 2025)
-   - Flask Backend, Vis.js Frontend, TMDb API Integration
-   - Graph Algorithms Implementation
-   
-3. J.A.R.V.I.S. - Voice-First Multi-Modal AI Assistant (Jul 2024 - Jul 2025)
-   - Python, FastAPI, MCP, Whisper, Llama-4-Scout
-   - 35+ Tools, LLM Cascade, Real-time HUD
+    let pdf = '%PDF-1.4\n';
+    const offsets = [0];
+    for (let i = 1; i < objects.length; i += 1) {
+      offsets[i] = pdf.length;
+      pdf += objects[i];
+    }
+    const xrefStart = pdf.length;
+    pdf += `xref\n0 ${objects.length}\n0000000000 65535 f \n`;
+    for (let i = 1; i < objects.length; i += 1) {
+      pdf += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`;
+    }
+    pdf += `trailer\n<< /Size ${objects.length} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`;
 
-═══════════════════════════════════════════
-
-EDUCATION
-• Master by Research - Data Analytics (2026-Present)
-  Melbourne Institute of Technology
-  
-• Bachelor of Data Analytics (2023-2025)
-  Melbourne Institute of Technology
-  
-• Undergraduate Diploma - BSc IT (Data Science) (2021-2022)
-  SLIIT, Sri Lanka
-
-═══════════════════════════════════════════
-
-EXPERIENCE
-• BCG (Forage) - GenAI Job Simulation (Mar 2025)
-• Commonwealth Bank (Forage) - Data Science Simulation (Feb 2025)
-• Lions Club International - Community Volunteer (Ongoing)
-
-═══════════════════════════════════════════
-
-CERTIFICATIONS
-• Web Development - Web Design for Beginners (Oct 2022)
-• Python for Beginners (Mar 2022)
-
-Generated: ${new Date().toLocaleDateString()}`;
-
-    // Create blob and download
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
+    const blob = new Blob([pdf], { type: 'application/pdf' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Althaf_Rismy_Resume.txt';
+    a.download = 'Althaf_Rismy_Resume.pdf';
     document.body.appendChild(a);
     a.click();
-    window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
+    setTimeout(() => window.URL.revokeObjectURL(url), 1000);
   }
+
 </script>
 </body>
 </html>
