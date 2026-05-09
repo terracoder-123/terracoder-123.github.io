@@ -3600,7 +3600,9 @@
     }
 
     // Hijack in-page anchor links so they scroll smoothly via Lenis
+    // Skip nav-links and mobile-menu links — those go through the JARVIS scanner
     document.querySelectorAll('a[href^="#"]').forEach(a => {
+      if(a.closest('.nav-links, .mobile-menu, .nav-logo')) return;
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href');
         if(id.length < 2) return;
