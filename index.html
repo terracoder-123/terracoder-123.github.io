@@ -4849,9 +4849,13 @@
     scanner.classList.remove('fade-out');
     scanner.classList.add('active');
 
-    // After brief scanner display, scroll and fade out
+    // After brief scanner display, scroll via Lenis and fade out
     setTimeout(()=>{
-      target.scrollIntoView({ behavior: 'smooth' });
+      if(window.__lenis){
+        window.__lenis.scrollTo(target, { offset: -70, duration: 1.2 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
       setTimeout(()=>{
         scanner.classList.add('fade-out');
         setTimeout(()=>{
