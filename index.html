@@ -129,7 +129,7 @@
   .logo-text { font-size: 1rem; letter-spacing: 2px; color: var(--accent); }
   .nav-logo { cursor: pointer; }
 
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 2.5rem; }
 
   .nav-links a {
     font-family: var(--mono-font);
@@ -2538,8 +2538,8 @@
   /* Enhanced achievement stats */
   .achievement-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1.2rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
     margin-top: 2.5rem;
     padding: 1.8rem;
     background: linear-gradient(135deg, rgba(232,68,42,.08), rgba(255,138,96,.04));
@@ -2547,6 +2547,8 @@
     border-radius: 8px;
     backdrop-filter: blur(10px);
   }
+
+  @media (max-width: 600px) { .achievement-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
   .achievement-stat {
     display: flex;
@@ -2947,7 +2949,7 @@
               <div class="stat-label">Years Research</div>
             </div>
             <div class="stat-badge stat-badge-2">
-              <div class="stat-number">3</div>
+              <div class="stat-number">4</div>
               <div class="stat-label">Key Projects</div>
             </div>
           </div>
@@ -3785,6 +3787,8 @@
     requestAnimationFrame(step);
 
     window.addEventListener('load', ()=>{ loadDone = true; });
+    // Never keep visitors waiting: show the site after 4s even if a CDN is slow
+    setTimeout(()=>{ loadDone = true; }, 4000);
 
     function maybeHide(){
       if(loadDone && countDone){
@@ -3798,7 +3802,7 @@
     // Staged log messages for dramatic effect
     setTimeout(()=> addLog('SYS', 'Booting A.R. System Interface...', ''), 100);
     setTimeout(()=> addLog('NET', 'Establishing secure connection...', ''), 500);
-    setTimeout(()=> addLog('NET', 'Intercepting IP address...', ''), 900);
+    setTimeout(()=> addLog('NET', 'Syncing local clock...', ''), 900);
 
     function getWeatherIcon(code){
       if(code === 0) return ['sun','Clear'];
@@ -3855,11 +3859,7 @@
         const isp = data.org || data.asn || '';
 
         // Dramatic IP analysis logs
-        setTimeout(()=> addLog('IP', `Target acquired: <span class="log-val">${ip}</span>`, ''), 1200);
-        setTimeout(()=> addLog('GEO', `Triangulating position...`, ''), 1600);
-        setTimeout(()=> addLog('GEO', `Location: <span class="log-val">${city}${region ? ', ' + region : ''}, ${country}</span>`, ''), 2100);
-        setTimeout(()=> addLog('GEO', `Coordinates: <span class="log-val">${lat ? lat.toFixed(4) : '?'}, ${lon ? lon.toFixed(4) : '?'}</span>`, ''), 2400);
-        if(isp) setTimeout(()=> addLog('NET', `ISP: <span class="log-val">${isp}</span>`, ''), 2600);
+        setTimeout(()=> addLog('GEO', `Welcome, visitor from <span class="log-val">${city}</span>`, ''), 1400);
         setTimeout(()=> addLog('TZ', `Timezone: <span class="log-val">${tz}</span>`, ''), 2800);
         setTimeout(()=> addLog('CLK', '<span class="log-ok">Clock synced to local time</span>', ''), 3000);
 
@@ -3900,7 +3900,7 @@
       }).catch(()=>{
         showLocalTime('UTC');
         weatherEl.textContent = 'Offline';
-        setTimeout(()=> addLog('NET', 'IP trace failed — using fallback', ''), 1400);
+        setTimeout(()=> addLog('SYS', 'Running in offline mode', ''), 1400);
       });
 
     // Ripple effect on sticky bar buttons
