@@ -29,7 +29,7 @@
       "graduate program data analytics"
     ],
     "seek_locations": ["All Adelaide SA", "All Australia"],
-    "seek_days": 3,
+    "window_days": 1,
     "seek_pages": 2,
     "indeed_queries": [
       ["data analyst", "Adelaide SA"],
@@ -79,7 +79,7 @@
       "graph": 4, "neo4j": 6, "network analysis": 6, "graduate": 6, "junior": 6,
       "entry": 4, "no experience": 6, "recent graduate": 8
     },
-    "senior_terms": ["senior", "snr", "sr.", "sr ", "lead", "principal", "manager", "head of", "director", "architect", "chief", "staff data", "expert"],
+    "senior_terms": ["senior", "snr", "sr.", "sr ", "lead", "principal", "manager", "managing", "head of", "director", "architect", "chief", "staff data", "expert"],
     "senior_penalty": 45,
     "exclude_terms": ["accountant", "accounting", "talent acquisition", "recruiter", "recruitment consultant", "sales", "leasing", "payroll", "nurse", "teacher", "compliance", "risk and", "pricing", "credit", "lawyer", "legal"],
     "experience_regex": "\\b([3-9]|1[0-9]|three|four|five|six|seven|eight|nine|ten)\\s*\\+?\\s*((-|–|to)\\s*\\w+\\s*)?(years|yrs)",

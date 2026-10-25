@@ -11,8 +11,8 @@ session:
    roles asking for 4+ years,
 4. writes up to 10 tailored one-page cover letters (`.docx`, same layout as Althaf's own),
    each one stating that Althaf will relocate to the job's city,
-5. sends the letters and a digest with the apply links, and records the jobs in
-   `ledger.json` so nothing is shown twice.
+5. sends the letters and a digest with the apply links. Each run only looks at ads from the
+   last day, and `ledger.json` records handled jobs so nothing is shown twice.
 
 Applications are **not** submitted automatically: Seek and Indeed require a signed-in
 person to apply. Open the link, attach the resume and the letter, and submit.

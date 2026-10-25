@@ -12,7 +12,7 @@ and hands Althaf the apply links; Althaf submits them.
 
 ```bash
 git fetch origin job-hunter && git checkout job-hunter && git pull origin job-hunter
-python3 -c "import docx" 2>/dev/null || pip install -q python-docx
+python3 -c "import docx" 2>/dev/null || python3 -m pip install -q python-docx
 export TODAY=$(TZ=Australia/Adelaide date +%F)
 ```
 
@@ -32,7 +32,8 @@ Save all results to `runs/$TODAY/indeed/results.txt`, one job per line, in this 
 JOBSEARCH_100448 | Data Analyst | Community Living Options | Edwardstown SA | October 09, 2026 | https://to.indeed.com/aarzcmmn9bc7
 ```
 
-If the Indeed connector is unavailable, carry on with Seek only and say so in the report.
+If no Indeed tools are available (ToolSearch for "Indeed search_jobs" finds nothing), skip this
+step, carry on with Seek only, and say so in one line of the report.
 
 ## 2. Search and rank
 
@@ -40,8 +41,8 @@ If the Indeed connector is unavailable, carry on with Seek only and say so in th
 python3 hunt.py search
 ```
 
-This pulls Seek automatically (last 3 days, Adelaide and all of Australia), merges the
-Indeed file, removes anything already in `ledger.json`, scores the rest and prints a
+This pulls Seek automatically (ads from the last day, Adelaide and all of Australia), merges
+the Indeed file (same window), removes anything already in `ledger.json`, scores the rest and prints a
 numbered shortlist. Adelaide and SA roles get the biggest location bonus.
 
 ## 3. Review the shortlist
@@ -123,14 +124,27 @@ This writes `out/$TODAY/digest-$TODAY.md` and adds every lettered or skipped job
 
 ## 6. Save the ledger
 
+First check push access:
+
 ```bash
-git add ledger.json
-git commit -m "Job hunt $TODAY: <n> letters"
-git push -u origin job-hunter
+git push --dry-run origin job-hunter
 ```
 
-Retry the push up to 4 times (2s, 4s, 8s, 16s) on network errors. Never commit `runs/` or
-`out/`: they hold the phone number and are gitignored.
+- If it succeeds, commit and push:
+
+  ```bash
+  git add ledger.json
+  git commit -m "Job hunt $TODAY: <n> letters"
+  git push -u origin job-hunter
+  ```
+
+  Retry the push up to 4 times (2s, 4s, 8s, 16s) on network errors only.
+- If it fails with 403 ("not in this session's authorized repository set"), the scheduled task
+  has no write access. Run `git checkout ledger.json` to drop the change, don't commit, don't
+  retry, and don't try `add_repo`. The one-day search window already stops jobs repeating.
+  Mention it in one line of the report.
+
+Never commit `runs/` or `out/`: they hold the phone number and are gitignored.
 
 ## 7. Report to Althaf
 

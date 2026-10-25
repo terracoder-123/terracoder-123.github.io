@@ -109,22 +109,28 @@ def html_to_text(h):
 # ---------------------------------------------------------------- sources
 
 def seek_jobs(days):
+    """Seek ads listed in the last `days` x 24 hours. Seek's own daterange filter counts
+    calendar days, so ask for a wider range and cut on the exact listing time. An hour of
+    slack covers the scheduled start drifting a little from day to day."""
     s = PROFILE["search"]
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days, hours=1)
     found = {}
     for where in s["seek_locations"]:
         for kw in s["keywords"]:
             for page in range(1, s["seek_pages"] + 1):
                 q = dict(siteKey="AU-Main", sourcesystem="houston", where=where, keywords=kw,
-                         page=page, pageSize=30, daterange=days, locale="en-AU")
+                         page=page, pageSize=100, daterange=days + 2, sortmode="ListedDate", locale="en-AU")
                 try:
                     data = http(SEEK_SEARCH + "?" + urllib.parse.urlencode(q))
                 except Exception as e:
                     print(f"  Seek search failed ({kw} / {where}): {e}", file=sys.stderr)
                     break
                 rows = data.get("data", [])
-                for j in rows:
+                fresh = [j for j in rows if not j.get("listingDate") or
+                         dt.datetime.fromisoformat(j["listingDate"].replace("Z", "+00:00")) >= cutoff]
+                for j in fresh:
                     found.setdefault(j["id"], seek_normalise(j))
-                if len(rows) < 30:
+                if len(rows) < 100 or len(fresh) < len(rows):  # newest first, so older rows mean we're done
                     break
                 time.sleep(0.5)
     print(f"Seek: {len(found)} unique listings")
@@ -168,9 +174,11 @@ def indeed_records(text):
             yield fields
 
 
-def indeed_jobs(day):
-    """Parse Indeed connector results the agent saved to runs/<day>/indeed/*."""
+def indeed_jobs(day, days):
+    """Parse Indeed connector results the agent saved to runs/<day>/indeed/*,
+    keeping ads posted within the same window as the Seek search (plus a day of slack)."""
     jobs = {}
+    oldest = (dt.date.fromisoformat(day) - dt.timedelta(days=days + 1)).isoformat()
     for f in sorted((run_dir(day) / "indeed").glob("*")):
         for fields in indeed_records(f.read_text()):
             posted = fields.get("Posted on", "").strip()
@@ -192,6 +200,8 @@ def indeed_jobs(day):
                 "url": fields.get("View Job URL", "").strip(),
                 "apply_url": fields.get("View Job URL", "").strip(),
             }
+            if posted and posted < oldest:
+                continue
             jobs.setdefault(job_key(job["title"], job["company"]) + "|" + norm(job["location"]), job)
     print(f"Indeed: {len(jobs)} unique listings from {len(list((run_dir(day) / 'indeed').glob('*')))} saved searches")
     return list(jobs.values())
@@ -278,7 +288,8 @@ def cmd_search(args):
     seen = {e["key"] for e in ledger}
 
     merged = {}
-    for job in seek_jobs(args.days or PROFILE["search"]["seek_days"]) + indeed_jobs(day):
+    days = args.days or PROFILE["search"]["window_days"]
+    for job in seek_jobs(days) + indeed_jobs(day, days):
         key = job_key(job["title"], job["company"])
         if key in merged:  # same ad on both boards: keep Seek, remember the Indeed link
             if job["source"] == "indeed":
@@ -377,7 +388,7 @@ def cmd_finish(args):
         lines += [f"- [{j['title']} | {j['company']} | {j['location']}]({j['url']}): {a['reason']}" for j, a in skipped]
         lines.append("")
     if rest:
-        lines += ["## Also matched (no letter yet, may come up again tomorrow)", ""]
+        lines += ["## Also matched (no letter written)", ""]
         lines += [f"- [{j['title']} | {j['company']} | {j['location']}]({j['url']}) score {j['score']}"
                   + (f" ({', '.join(j['flags'])})" if j["flags"] else "") for j in rest]
         lines.append("")
@@ -400,7 +411,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("search"); s.add_argument("--top", type=int, default=30)
-    s.add_argument("--days", type=int, help="Seek listing age in days (default from profile.json)"); s.set_defaults(fn=cmd_search)
+    s.add_argument("--days", type=int, help="max listing age in days (default from profile.json)"); s.set_defaults(fn=cmd_search)
     s = sub.add_parser("detail"); s.add_argument("n", type=int); s.set_defaults(fn=cmd_detail)
     s = sub.add_parser("describe"); s.add_argument("n", type=int); s.add_argument("file"); s.set_defaults(fn=cmd_describe)
     s = sub.add_parser("skip"); s.add_argument("n", type=int); s.add_argument("reason"); s.set_defaults(fn=cmd_skip)

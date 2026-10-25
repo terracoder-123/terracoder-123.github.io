@@ -168,5 +168,55 @@
     "company": "People First Bank",
     "location": "Adelaide SA",
     "url": "https://www.seek.com.au/job/95356272"
+  },
+  {
+    "key": "data reporting analyst sql casual healthcare|dokotela",
+    "date": "2026-10-25",
+    "status": "letter",
+    "source": "seek",
+    "title": "Data & reporting Analyst (SQL), Casual, Healthcare",
+    "company": "Dokotela",
+    "location": "Bondi Junction, Sydney NSW",
+    "url": "https://www.seek.com.au/job/95446655"
+  },
+  {
+    "key": "graduate ai data product|woolloo",
+    "date": "2026-10-25",
+    "status": "letter",
+    "source": "seek",
+    "title": "Graduate – AI, Data & Product",
+    "company": "Woolloo",
+    "location": "Barangaroo, Sydney NSW",
+    "url": "https://www.seek.com.au/job/95458658"
+  },
+  {
+    "key": "graduate business analyst|blacktown city council",
+    "date": "2026-10-25",
+    "status": "letter",
+    "source": "seek",
+    "title": "Graduate Business Analyst",
+    "company": "Blacktown City Council",
+    "location": "Blacktown, Sydney NSW",
+    "url": "https://www.seek.com.au/job/95445353"
+  },
+  {
+    "key": "fundraising data and insights officer|st vincent de paul society nsw",
+    "date": "2026-10-25",
+    "status": "letter",
+    "source": "seek",
+    "title": "Fundraising Data and Insights Officer",
+    "company": "St Vincent de Paul Society NSW",
+    "location": "Lewisham, Sydney NSW",
+    "url": "https://www.seek.com.au/job/95445684"
+  },
+  {
+    "key": "client data analystflexible|berry street",
+    "date": "2026-10-25",
+    "status": "letter",
+    "source": "seek",
+    "title": "Client Data Analyst",
+    "company": "Berry Street",
+    "location": "Melbourne VIC",
+    "url": "https://www.seek.com.au/job/95470511"
   }
 ]
