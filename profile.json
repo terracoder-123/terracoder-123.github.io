@@ -1,0 +1,144 @@
+{
+  "applicant": {
+    "name": "Althaf Rismy",
+    "headline": "Data Analyst | Data Science Researcher",
+    "suburb": "Clayton South, VIC",
+    "email": "althafrismy01@gmail.com",
+    "linkedin": "linkedin.com/in/althaf-rismy0390b0154",
+    "portfolio": "terracoder-123.github.io",
+    "home_city": "Melbourne",
+    "phone_env": "APPLICANT_PHONE"
+  },
+
+  "eligibility": {
+    "working_rights": "full-time working rights in Australia",
+    "australian_citizen": false,
+    "note": "Roles that need NV1/NV2/baseline clearance or Australian citizenship are listed but get no cover letter while australian_citizen is false."
+  },
+
+  "search": {
+    "keywords": [
+      "data analyst",
+      "junior data analyst",
+      "graduate data analyst",
+      "business intelligence analyst",
+      "reporting analyst",
+      "insights analyst",
+      "data scientist",
+      "junior data engineer",
+      "graduate program data analytics"
+    ],
+    "seek_locations": ["All Adelaide SA", "All Australia"],
+    "seek_days": 3,
+    "seek_pages": 2,
+    "indeed_queries": [
+      ["data analyst", "Adelaide SA"],
+      ["junior data analyst", "Adelaide SA"],
+      ["business intelligence analyst", "Adelaide SA"],
+      ["data scientist", "Adelaide SA"],
+      ["reporting analyst", "Adelaide SA"],
+      ["graduate data analyst", "Australia"],
+      ["junior data analyst", "Australia"],
+      ["data analyst", "remote"]
+    ],
+    "max_letters_per_day": 10,
+    "min_score": 35
+  },
+
+  "scoring": {
+    "title_terms": {
+      "data analyst": 30,
+      "data analytics": 22,
+      "analytics": 14,
+      "analyst": 10,
+      "insight": 14,
+      "business intelligence": 22,
+      "bi ": 14,
+      "power bi": 10,
+      "reporting": 10,
+      "data scientist": 24,
+      "data science": 22,
+      "machine learning": 12,
+      "data engineer": 14,
+      "analytics engineer": 14,
+      "data": 8,
+      "python": 10,
+      "sql": 10,
+      "graph": 10,
+      "research": 6,
+      "graduate": 18,
+      "junior": 18,
+      "entry level": 15,
+      "associate": 6,
+      "trainee": 10,
+      "cadet": 10
+    },
+    "body_terms": {
+      "python": 6, "sql": 6, "pandas": 5, "excel": 3, "statistic": 4,
+      "visualisation": 4, "visualization": 4, "dashboard": 3, "machine learning": 4,
+      "graph": 4, "neo4j": 6, "network analysis": 6, "graduate": 6, "junior": 6,
+      "entry": 4, "no experience": 6, "recent graduate": 8
+    },
+    "senior_terms": ["senior", "snr", "sr.", "sr ", "lead", "principal", "manager", "head of", "director", "architect", "chief", "staff data", "expert"],
+    "senior_penalty": 45,
+    "exclude_terms": ["accountant", "accounting", "talent acquisition", "recruiter", "recruitment consultant", "sales", "leasing", "payroll", "nurse", "teacher", "compliance", "risk and", "pricing", "credit", "lawyer", "legal"],
+    "experience_regex": "\\b([3-9]|1[0-9]|three|four|five|six|seven|eight|nine|ten)\\s*\\+?\\s*((-|–|to)\\s*\\w+\\s*)?(years|yrs)",
+    "experience_penalty": 15,
+    "clearance_regex": "\\b(nv1|nv2|negative vetting|baseline (security )?clearance|security clearance|australian citizens?(hip)?|must be an australian citizen|pv clearance)\\b",
+    "clearance_penalty": 25,
+    "location": {
+      "adelaide": 40,
+      "south_australia": 35,
+      "remote": 15,
+      "melbourne": 12,
+      "other_capital": 10,
+      "regional": 4
+    },
+    "recency": { "le_2_days": 10, "le_7_days": 5, "gt_30_days": -15 }
+  },
+
+  "facts": {
+    "education": [
+      "Master by Research (Data Analytics), Melbourne Institute of Technology, Mar 2026 - present. It can be completed online, so relocating does not interrupt it.",
+      "Bachelor of Data Analytics, Melbourne Institute of Technology, Mar 2023 - Dec 2025.",
+      "Undergraduate Diploma, BSc in IT (Data Science), SLIIT Sri Lanka, 2021 - 2022."
+    ],
+    "skills": [
+      "Python (advanced): pandas, NumPy, scikit-learn, Matplotlib, Seaborn, Plotly",
+      "SQL / MySQL, SQLite; Excel and the Microsoft Office suite",
+      "Graph databases: Neo4j, ArangoDB; social network analysis, community detection, centrality measures",
+      "Statistical analysis, data cleaning, exploratory analysis, data visualisation",
+      "Flask, FastAPI, Socket.IO, Vis.js, web development",
+      "Java, C, C++",
+      "Windows Server 2022, Active Directory, DNS, DHCP"
+    ],
+    "projects": [
+      "Capstone research (MIT, Jul 2024 - Jul 2025): graph representation of personal and criminal networks. Social network analysis in Neo4j and ArangoDB; community detection and degree/betweenness/closeness centrality to find influential nodes and hidden structures; findings communicated to a non-technical audience.",
+      "MovieGraph (MIT, 2024 - 2025): graph-based movie discovery and recommendation system. Python Flask backend, live TMDb API data, interactive Vis.js visualisation, pathfinding algorithms for a foundational recommendation engine.",
+      "J.A.R.V.I.S. (personal project): voice-first multi-modal AI assistant in Python with real-time data analytics and Plotly charts; four-provider LLM cascade with per-model cooldowns so it keeps running when external services hit usage limits; MCP tool server with 35+ tools; importance-ranked SQLite memory; ~2.5 s voice round-trips.",
+      "System administration and infrastructure design (MIT, Mar 2024): scalable IT infrastructure on Windows Server 2022 Datacenter with DNS, DHCP, Active Directory and a dedicated backup server."
+    ],
+    "simulations": [
+      "Commonwealth Bank Introduction to Data Science job simulation (Forage, Feb 2025): built data engineering pipelines to aggregate and extract insights; applied data anonymisation for privacy compliance.",
+      "BCG GenAI job simulation (Forage, Mar 2025): built an AI-powered financial chatbot in Python and pandas; interpreted 10-K and 10-Q financial data with rule-based logic to give plain-language insights."
+    ],
+    "community": [
+      "Member, Lions Club International: community service and social impact programs."
+    ],
+    "do_not_claim": [
+      "paid or commercial work experience as a data analyst",
+      "Power BI, Tableau, Snowflake, Azure, AWS, GCP, dbt or Databricks experience (say you are keen to apply your Python/SQL visualisation skills to them instead)",
+      "any number of years of experience",
+      "Australian citizenship, permanent residency or a security clearance",
+      "a specific start date or relocation at own expense (not confirmed)"
+    ]
+  },
+
+  "relocation": {
+    "adelaide": "I hold full-time working rights in Australia and I am ready to relocate to Adelaide for this role. Adelaide is the city I am focusing my career on, and I can organise my move to suit your start date. My Master by Research can be completed online, so I will be able to commit fully to the role while I continue my studies.",
+    "south_australia": "I hold full-time working rights in Australia and I am ready to relocate to {city} for this role. South Australia is where I am focusing my career, and I can organise my move to suit your start date. My Master by Research can be completed online, so I will be able to commit fully to the role while I continue my studies.",
+    "other": "I hold full-time working rights in Australia and I am ready to relocate to {city} for this role, and I can organise my move to suit your start date. My Master by Research can be completed online, so I will be able to commit fully to the role while I continue my studies.",
+    "home": "I hold full-time working rights in Australia and I am based in Clayton South, so I can commute to your {city} office without any relocation. My Master by Research can be completed online and around work hours, so I will be able to commit fully to the role.",
+    "remote": "I hold full-time working rights in Australia and I am set up to work remotely across Australian time zones. I am also happy to relocate if the role later needs me on site. My Master by Research can be completed online, so I will be able to commit fully to the role."
+  }
+}
