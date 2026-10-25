@@ -55,7 +55,9 @@ Work down the shortlist from the top. Read the full ad before deciding:
 
 **Skip** (`python3 hunt.py skip N "short reason"`) when the ad:
 
-- needs Australian citizenship, permanent residency, or an NV1/NV2/baseline clearance
+- accepts only Australian citizens or permanent residents, or needs an NV1/NV2/baseline clearance.
+  Althaf has full-time work rights, so any ad that also welcomes people with work rights
+  ("full working rights", "right to work in Australia", "valid visa") is fine
 - sets a hard minimum of 4+ years' experience, or is senior / lead / manager level
 - is not data, analytics, BI, data engineering, data science or a closely related IT graduate role
 - needs a licence, registration or check Althaf doesn't have as an essential requirement

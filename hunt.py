@@ -258,7 +258,10 @@ def score(job):
     if re.search(sc["experience_regex"], text):
         pts -= sc["experience_penalty"]
         why.append(f"3+ yrs exp -{sc['experience_penalty']}")
-    if re.search(sc["clearance_regex"], text, re.I):
+    # Full work rights cover any ad that also welcomes work-rights holders; only a clearance
+    # or a citizens/PR-only ad is out of reach.
+    if re.search(sc["clearance_regex"], text, re.I) or (
+            re.search(sc["citizen_regex"], text, re.I) and not re.search(sc["work_rights_regex"], text, re.I)):
         flags.append("clearance/citizenship")
         if not PROFILE["eligibility"]["australian_citizen"]:
             pts -= sc["clearance_penalty"]

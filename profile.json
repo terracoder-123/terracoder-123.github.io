@@ -13,7 +13,7 @@
   "eligibility": {
     "working_rights": "full-time working rights in Australia",
     "australian_citizen": false,
-    "note": "Roles that need NV1/NV2/baseline clearance or Australian citizenship are listed but get no cover letter while australian_citizen is false."
+    "note": "Althaf has full-time work rights. Ads open to anyone with work rights are eligible. Ads that need a security clearance, or only accept citizens or permanent residents, get no cover letter while australian_citizen is false."
   },
 
   "search": {
@@ -84,7 +84,9 @@
     "exclude_terms": ["accountant", "accounting", "talent acquisition", "recruiter", "recruitment consultant", "sales", "leasing", "payroll", "nurse", "teacher", "compliance", "risk and", "pricing", "credit", "lawyer", "legal"],
     "experience_regex": "\\b([3-9]|1[0-9]|three|four|five|six|seven|eight|nine|ten)\\s*\\+?\\s*((-|–|to)\\s*\\w+\\s*)?(years|yrs)",
     "experience_penalty": 15,
-    "clearance_regex": "\\b(nv1|nv2|negative vetting|baseline (security )?clearance|security clearance|australian citizens?(hip)?|must be an australian citizen|pv clearance)\\b",
+    "clearance_regex": "\\b(nv1|nv2|negative vetting|baseline (security )?clearance|security clearance|pv clearance|must (be|hold) an australian citizen|citizens? only|citizenship (is )?(required|essential|mandatory))\\b",
+    "citizen_regex": "\\b(australian citizens?(hip)?|permanent residen(t|ts|cy))\\b",
+    "work_rights_regex": "\\b(work(ing)? rights|right to (live and )?work|legal right to work|valid (work )?visa|work permit)\\b",
     "clearance_penalty": 25,
     "location": {
       "adelaide": 40,
