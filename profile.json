@@ -12,6 +12,7 @@
 
   "eligibility": {
     "working_rights": "full-time working rights in Australia",
+    "work_rights_basis": "Student visa (subclass 500) as a Master by Research student: unlimited work hours while enrolled. Not a citizen or permanent resident. Letters say 'full-time working rights' and do not mention the visa.",
     "australian_citizen": false,
     "note": "Althaf has full-time work rights. Ads open to anyone with work rights are eligible. Ads that need a security clearance, or only accept citizens or permanent residents, get no cover letter while australian_citizen is false."
   },
