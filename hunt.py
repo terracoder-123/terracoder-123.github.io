@@ -228,6 +228,8 @@ def location_tier(job):
             return ("melbourne" if mode == "home" else "other_capital"), city.title(), mode
     if state:
         town = re.sub(rf"\b{state}\b.*", "", job["location"]).split(",")[-1].strip() or STATE_CAPITAL[state]
+        if town in ("Gold Coast", "Sunshine Coast", "Central Coast"):
+            town = "the " + town  # "relocate to the Gold Coast"
         return "regional", town, "other"
     return "regional", job["location"], "other"
 
