@@ -375,7 +375,7 @@ def cmd_finish(args):
     apps = load_json(run_dir(day) / "applications.json", [])
     done = {a["n"]: a for a in apps}
     letters = [(items[n], a) for n, a in done.items() if a["status"] == "letter"]
-    letters.sort(key=lambda p: -p[0]["score"])
+    letters.sort(key=lambda p: (p[0]["tier"] not in ("adelaide", "south_australia"), -p[0]["score"]))
     skipped = [(items[n], a) for n, a in done.items() if a["status"] == "skipped"]
     rest = [j for n, j in items.items() if n not in done][:15]
 
