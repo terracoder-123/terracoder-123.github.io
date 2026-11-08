@@ -49,15 +49,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #080507;
-    --bg2: #100a0c;
-    --surface: #160d10;
+    --bg: #040a14;
+    --bg2: #060f20;
+    --surface: #08142a;
     --border: rgba(0,170,255,0.13);
     --accent: #00b4ff;
     --accent2: #7fd8ff;
     --accent3: #33c8ff;
-    --text: #f0e8e5;
-    --muted: #8a7570;
+    --text: #e6f0f5;
+    --muted: #70808a;
     --heading-font: 'Bebas Neue', sans-serif;
     --body-font: 'DM Sans', sans-serif;
     --mono-font: 'JetBrains Mono', monospace;
@@ -89,7 +89,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 clamp(1.5rem, 5vw, 4rem);
     height: 64px;
-    background: rgba(8,5,7,0.95);
+    background: rgba(4,10,20,0.95);
     border-bottom: 1px solid var(--border);
   }
 
@@ -214,7 +214,7 @@
   .mobile-menu {
     display: none;
     position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-    background: rgba(8,5,7,0.97);
+    background: rgba(4,10,20,0.97);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 1.5rem clamp(1.5rem,5vw,4rem);
@@ -357,7 +357,7 @@
     text-transform: uppercase;
     background: transparent;
     color: var(--text);
-    border: 2px solid rgba(240, 232, 229, 0.25);
+    border: 2px solid rgba(230,240,245, 0.25);
     padding: .75rem 2rem;
     border-radius: 6px;
     cursor: pointer;
@@ -522,8 +522,8 @@
     min-width: 148px;
     padding: .6rem .95rem;
     border-radius: 999px;
-    background: rgba(16,10,12,.82);
-    border: 1px solid rgba(240,232,229,.1);
+    background: rgba(6,16,32,.82);
+    border: 1px solid rgba(230,240,245,.1);
     box-shadow: 0 10px 24px rgba(0,0,0,.22);
     display: flex;
     flex-direction: column;
@@ -618,7 +618,7 @@
   }
   .hero-photo-flip-back {
     transform: rotateY(180deg);
-    background: linear-gradient(145deg, rgba(20, 12, 15, 0.96), rgba(8, 5, 7, 0.98));
+    background: linear-gradient(145deg, rgba(7,18,36, 0.96), rgba(4,10,20, 0.98));
     border: 1px solid rgba(0,180,255, 0.3);
     border-radius: 12px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 40px rgba(0,180,255, 0.15);
@@ -667,7 +667,7 @@
     position: absolute; bottom: -14px; right: -14px; z-index: 10;
     width: 44px; height: 44px; border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: 2px solid rgba(8, 5, 7, 0.9);
+    border: 2px solid rgba(4,10,20, 0.9);
     color: #fff; font-size: 1.1rem; cursor: pointer;
     box-shadow: 0 8px 24px rgba(0,180,255, 0.5), 0 0 20px rgba(0,180,255, 0.25);
     transition: transform .35s cubic-bezier(.165,.84,.44,1), box-shadow .35s ease;
@@ -830,7 +830,7 @@
 
   .hero-photo-frame:hover .hero-photo-overlay,
   .hero-photo-frame:focus-within .hero-photo-overlay {
-    background: linear-gradient(170deg, transparent 55%, rgba(8,5,7,.36) 100%);
+    background: linear-gradient(170deg, transparent 55%, rgba(4,10,20,.36) 100%);
   }
 
   /* Red gradient overlay on photo */
@@ -839,7 +839,7 @@
     background: linear-gradient(
       170deg,
       transparent 40%,
-      rgba(8,5,7,.55) 100%
+      rgba(4,10,20,.55) 100%
     );
     pointer-events: none;
   }
@@ -847,7 +847,7 @@
   /* Floating stat badges */
   .stat-badge {
     position: absolute; z-index: 4;
-    background: rgba(8,5,7,.95);
+    background: rgba(4,10,20,.95);
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: .65rem 1rem;
@@ -1015,7 +1015,7 @@
   }
 
   .skill-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(0,180,255, 0.25);
     border-radius: 12px;
     padding: 1.5rem;
@@ -1151,7 +1151,7 @@
   #projects .project-list { display: flex; flex-direction: column; gap: 2rem; }
 
   .project-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(0,180,255, 0.22);
     border-radius: 12px;
     padding: 2rem 2.5rem;
@@ -1174,7 +1174,7 @@
   }
 
   .project-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(0,180,255, 0.22);
     border-radius: 12px;
     padding: 2rem 2.5rem;
@@ -1306,7 +1306,7 @@
 
   .gnn-lab-panel,
   .gnn-lab-quiz {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(0,180,255, 0.25);
     border-radius: 16px;
     padding: 1.5rem;
@@ -1859,7 +1859,7 @@
   }
 
   .skill-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(0,180,255, 0.25);
     border-radius: 12px;
     padding: 1.5rem;
@@ -1886,7 +1886,7 @@
   }
 
   .exp-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(127,216,255, 0.25);
     border-radius: 12px;
     padding: 2rem;
@@ -1941,7 +1941,7 @@
   }
 
   .cert-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(232, 192, 64, 0.25); 
     border-radius: 12px;
     padding: 1.5rem 1.75rem; 
@@ -1987,7 +1987,7 @@
   }
 
   .contact-card {
-    background: linear-gradient(135deg, rgba(22, 13, 16, 0.95), rgba(16, 10, 12, 0.98));
+    background: linear-gradient(135deg, rgba(8,20,40, 0.95), rgba(6,16,32, 0.98));
     border: 1px solid rgba(0,180,255, 0.28); 
     border-radius: 12px;
     padding: 1.5rem 2rem; 
@@ -2046,7 +2046,7 @@
   .jarvis-scanner {
     position: fixed; inset: 0; z-index: 9998;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(8,5,7,.92);
+    background: rgba(4,10,20,.92);
     pointer-events: none;
     opacity: 0;
     transition: opacity .15s ease;
@@ -2285,8 +2285,8 @@
   #pageLoader {
     position: fixed; inset: 0; z-index: 9999;
     display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(ellipse at 50% 40%, rgba(0,180,255,.06) 0%, rgba(8,5,7,1) 70%);
-    background-color: #080507;
+    background: radial-gradient(ellipse at 50% 40%, rgba(0,180,255,.06) 0%, rgba(4,10,20,1) 70%);
+    background-color: #040a14;
     color: #fff; font-family: var(--mono-font); user-select: none;
     transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.9,.1,1);
     overflow: hidden;
@@ -2378,7 +2378,7 @@
   /* Terminal log */
   .jarvis-terminal {
     width: 100%;
-    background: rgba(8,5,7,.6);
+    background: rgba(4,10,20,.6);
     border: 1px solid rgba(0,180,255,.15);
     border-radius: 6px;
     padding: .7rem .9rem;
@@ -2505,7 +2505,7 @@
     position: absolute;
     inset: 1px;
     border-radius: inherit;
-    background: rgba(13, 10, 12, .88);
+    background: rgba(6,14,28, .88);
     backdrop-filter: blur(10px);
     z-index: -1;
   }
@@ -4196,7 +4196,7 @@
     position: fixed; top: 0; left: 0;
     z-index: 9998;
     padding: .45rem .75rem;
-    background: rgba(20,12,15,.95);
+    background: rgba(7,18,36,.95);
     border: 1px solid var(--accent);
     border-radius: 4px;
     color: var(--text);
@@ -4300,7 +4300,7 @@
     width: min(900px, 100%);
     max-height: 88vh;
     overflow-y: auto;
-    background: linear-gradient(160deg, rgba(20,12,15,.98), rgba(8,5,7,.99));
+    background: linear-gradient(160deg, rgba(7,18,36,.98), rgba(4,10,20,.99));
     border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: 0 30px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04);
@@ -5387,7 +5387,7 @@
 
   // Use accent color for the rain
   function draw(){
-    ctx.fillStyle = 'rgba(8,5,7,.12)';
+    ctx.fillStyle = 'rgba(4,10,20,.12)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const isHolo = document.body.classList.contains('hologram-mode');
