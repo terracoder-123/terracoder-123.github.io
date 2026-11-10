@@ -32,7 +32,7 @@ TZ = ZoneInfo("Australia/Adelaide")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
 
 SEEK_SEARCH = "https://www.seek.com.au/api/jobsearch/v5/search"
-SEEK_GRAPHQL = "https://www.seek.com.au/graphql"
+SEEK_GRAPHQL = "https://au.seek.com/graphql"
 SEEK_DETAIL_QUERY = """query jobDetails($jobId: ID!, $locale: Locale!) {
   jobDetails(id: $jobId) { job {
     id title content(platform: WEB)
