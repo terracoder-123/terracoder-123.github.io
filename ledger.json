@@ -458,5 +458,215 @@
     "company": "BYD Automotive",
     "location": "Mulgrave, Melbourne VIC",
     "url": "https://www.seek.com.au/job/95790715"
+  },
+  {
+    "key": "data analyst|private advertiser",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "Data Analyst",
+    "company": "Private Advertiser",
+    "location": "Adelaide SA",
+    "url": "https://www.seek.com.au/job/95804830"
+  },
+  {
+    "key": "transport coordinator data analyst|wightmans transport",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "Transport Coordinator / Data Analyst",
+    "company": "Wightmans Transport",
+    "location": "Edinburgh, Adelaide SA",
+    "url": "https://www.seek.com.au/job/95802286"
+  },
+  {
+    "key": "data analyst|government of south",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "indeed",
+    "title": "Data Analyst",
+    "company": "Government of South Australia",
+    "location": "Adelaide SA",
+    "url": "https://to.indeed.com/aay6wtfsnqqb"
+  },
+  {
+    "key": "service desk analyst|hambs",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "Service Desk Analyst",
+    "company": "HAMBS",
+    "location": "Adelaide SA",
+    "url": "https://www.seek.com.au/job/95715774"
+  },
+  {
+    "key": "temporary sso2 aberfoyle park high school ict support officer|department for education child development sa",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "TEMPORARY SSO2 - ABERFOYLE PARK HIGH SCHOOL - ICT SUPPORT OFFICER",
+    "company": "Department for Education & Child Development SA",
+    "location": "Aberfoyle Park, Adelaide SA",
+    "url": "https://www.seek.com.au/job/95802075"
+  },
+  {
+    "key": "data analyst people analytics|cimic",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "Data Analyst (People Analytics)",
+    "company": "Cimic Group",
+    "location": "North Sydney, Sydney NSW",
+    "url": "https://www.seek.com.au/job/95705543"
+  },
+  {
+    "key": "associate service desk analyst graduate|rsm",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "Associate Service Desk Analyst - Graduate",
+    "company": "RSM",
+    "location": "Perth WA",
+    "url": "https://www.seek.com.au/job/95729840"
+  },
+  {
+    "key": "junior data consultant junior data engineer|tl consulting",
+    "date": "2026-11-11",
+    "status": "letter",
+    "source": "seek",
+    "title": "Junior Data Consultant / Junior Data Engineer",
+    "company": "TL Consulting Group",
+    "location": "Sydney NSW",
+    "url": "https://www.seek.com.au/job/95799533"
+  },
+  {
+    "key": "seqta and data analytics leader por2|st michael s college",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "SEQTA and Data Analytics Leader - POR2",
+    "company": "St Michael's College",
+    "location": "Henley Beach, Adelaide SA",
+    "url": "https://www.seek.com.au/job/95705348"
+  },
+  {
+    "key": "service desk analyst|hudson",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Service Desk Analyst",
+    "company": "Hudson",
+    "location": "Adelaide SA",
+    "url": "https://www.seek.com.au/job/95791439"
+  },
+  {
+    "key": "it support officer|fmg engineering",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "IT Support Officer",
+    "company": "FMG Engineering",
+    "location": "Wayville, Adelaide SA",
+    "url": "https://www.seek.com.au/job/95742606"
+  },
+  {
+    "key": "it support technician|active tree services",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "IT Support Technician",
+    "company": "Active Tree Services",
+    "location": "Edwardstown, Adelaide SA",
+    "url": "https://www.seek.com.au/job/95770066"
+  },
+  {
+    "key": "analyst planning and reporting operations|enerven",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Analyst Planning and Reporting (Operations)",
+    "company": "Enerven",
+    "location": "Hindmarsh, Adelaide SA",
+    "url": "https://www.seek.com.au/job/95816198"
+  },
+  {
+    "key": "helpdesk operator|downer",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Helpdesk Operator",
+    "company": "Downer",
+    "location": "Adelaide SA",
+    "url": "https://www.seek.com.au/job/95637024"
+  },
+  {
+    "key": "ict support officer temporary sso2 aberfoyle park high school|department for education south",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "indeed",
+    "title": "ICT Support Officer (Temporary SSO2), Aberfoyle Park High School",
+    "company": "Department for Education, South Australia",
+    "location": "Aberfoyle Park SA",
+    "url": "https://to.indeed.com/aamk7tn9zvxc"
+  },
+  {
+    "key": "desktop support engineer l1|total it global",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "indeed",
+    "title": "Desktop Support Engineer L1",
+    "company": "Total IT Global",
+    "location": "Greater Adelaide SA",
+    "url": "https://to.indeed.com/aayxbjprfzf2"
+  },
+  {
+    "key": "graduate junior gis analyst|kbr",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Graduate / Junior GIS Analyst",
+    "company": "KBR",
+    "location": "Newcastle, Newcastle, Maitland & Hunter NSW",
+    "url": "https://www.seek.com.au/job/95767365"
+  },
+  {
+    "key": "data it support analyst|firmable",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Data & IT Support Analyst",
+    "company": "Firmable",
+    "location": "Cremorne, Melbourne VIC",
+    "url": "https://www.seek.com.au/job/95797528"
+  },
+  {
+    "key": "data analyst lms|country fire authority cfa",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Data Analyst - LMS",
+    "company": "Country Fire Authority (CFA)",
+    "location": "Burwood East, Melbourne VIC",
+    "url": "https://www.seek.com.au/job/95777299"
+  },
+  {
+    "key": "data analyst|tech data people",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Data Analyst",
+    "company": "Tech & Data People",
+    "location": "Bayside & South Eastern Suburbs, Melbourne VIC",
+    "url": "https://www.seek.com.au/job/95741210"
+  },
+  {
+    "key": "database and it support analyst|maas",
+    "date": "2026-11-11",
+    "status": "skipped",
+    "source": "seek",
+    "title": "Database and IT Support Analyst",
+    "company": "MAAS Group",
+    "location": "Lidcombe, Sydney NSW",
+    "url": "https://www.seek.com.au/job/95802226"
   }
 ]

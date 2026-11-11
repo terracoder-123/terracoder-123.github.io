@@ -27,7 +27,9 @@
       "insights analyst",
       "data scientist",
       "junior data engineer",
-      "graduate program data analytics"
+      "graduate program data analytics",
+      "junior IT support",
+      "service desk analyst"
     ],
     "seek_locations": ["All Adelaide SA", "All Australia"],
     "window_days": 1,
@@ -40,7 +42,9 @@
       ["reporting analyst", "Adelaide SA"],
       ["graduate data analyst", "Australia"],
       ["junior data analyst", "Australia"],
-      ["data analyst", "remote"]
+      ["data analyst", "remote"],
+      ["IT support", "Adelaide SA"],
+      ["junior IT support", "Melbourne VIC"]
     ],
     "max_letters_per_day": 10,
     "min_score": 35
@@ -72,7 +76,15 @@
       "entry level": 15,
       "associate": 6,
       "trainee": 10,
-      "cadet": 10
+      "cadet": 10,
+      "it support": 24,
+      "ict support": 24,
+      "service desk": 22,
+      "help desk": 22,
+      "helpdesk": 22,
+      "desktop support": 22,
+      "systems administrator": 16,
+      "system administrator": 16
     },
     "body_terms": {
       "python": 6, "sql": 6, "pandas": 5, "excel": 3, "statistic": 4,

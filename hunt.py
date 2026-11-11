@@ -45,7 +45,8 @@ SEEK_DETAIL_QUERY = """query jobDetails($jobId: ID!, $locale: Locale!) {
 CAPITALS = {"adelaide": "SA", "melbourne": "VIC", "sydney": "NSW", "brisbane": "QLD",
             "perth": "WA", "hobart": "TAS", "darwin": "NT", "canberra": "ACT"}
 STATE_CAPITAL = {v: k.title() for k, v in CAPITALS.items()}
-RELEVANT = re.compile(r"data|analy|insight|intelligence|\bbi\b|reporting|scien|python|\bsql\b|machine learning|graph|quantitative|statistic")
+RELEVANT = re.compile(r"data|analy|insight|intelligence|\bbi\b|reporting|scien|python|\bsql\b|machine learning|graph|quantitative|statistic"
+                      r"|\bit support|\bict\b|service desk|help ?desk|desktop support|systems? admin")
 
 
 def today():
